@@ -1,3 +1,4 @@
+using System.IO;
 using FizzBuzz;
 
 namespace TestFizzBuzz;
@@ -52,5 +53,53 @@ public class TestFizzBuzz
     public void TestFizzBuzzGivenThirtyReturnsFizzBuzz()
     {
         Assert.Equal("FizzBuzz", FizzBuzzGenerator.fizzBuzzFor(30));
+    }
+
+    [Fact]
+    public void TestFizzBuzzReturnsOneOnTheFirstIteration()
+    {
+        TextWriter writer = new StringWriter();
+        
+        new FizzBuzzGenerator(writer).play();
+        
+        string[] output = WriterToArray(writer);
+        Assert.Equal("1", output[0]);
+    }
+
+    [Fact]
+    public void TestFizzBuzzReturnsTwentyThreeOnTheTwentyThirdIteration()
+    {
+        TextWriter writer = new StringWriter();
+        
+        new FizzBuzzGenerator(writer).play();
+
+        string[] output = WriterToArray(writer);
+        Assert.Equal("23", output[22]);
+    }
+
+    [Fact]
+    public void TestFizzBuzzReturnsBuzzOnTheOneHundredthIteration()
+    {
+        TextWriter writer = new StringWriter();
+
+        new FizzBuzzGenerator(writer).play();
+
+        string[] output = WriterToArray(writer);
+        Assert.Equal("Buzz", output[99]);
+    }
+
+    [Fact]
+    public void TestFizzBuzzReturnsOneHundredLines()
+    {
+        TextWriter writer = new StringWriter();
+
+        new FizzBuzzGenerator(writer).play();
+        
+        Assert.Equal(100, WriterToArray(writer).Length);
+    }
+    
+    private static string[] WriterToArray(TextWriter writer)
+    {
+        return writer.ToString().Trim().Split('\n');
     }
 }
