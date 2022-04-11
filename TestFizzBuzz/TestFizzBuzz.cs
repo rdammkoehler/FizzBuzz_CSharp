@@ -41,8 +41,7 @@ public class TestFizzBuzz
     {
         Assert.Equal("Buzz", FizzBuzzGenerator.fizzBuzzFor(10));
     }
-    
-    // Rule 4: Multiples of 3 & 5 return 'FizzBuzz'
+
     [Fact]
     public void TestFizzBuzzGivenFifteenReturnsFizzBuzz()
     {

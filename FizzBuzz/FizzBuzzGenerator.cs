@@ -6,21 +6,17 @@ public class FizzBuzzGenerator
 {
     public static string fizzBuzzFor(int given)
     {
-        if (given % 3 == 0 && given % 5 == 0)
-        {
-            return "FizzBuzz";
-        }
-
+        var result = "";
         if (given % 3 == 0)
         {
-            return "Fizz";
+            result += "Fizz";
         }
 
         if (given % 5 == 0)
         {
-            return "Buzz";
+            result += "Buzz";
         }
 
-        return given.ToString();
+        return (result == "") ? given.ToString() : result;
     }
 }
