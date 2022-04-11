@@ -6,22 +6,18 @@ namespace FizzBuzz
     {
         public static string fizzBuzzFor(int inputValue)
         {
-            if (inputValue % 3 == 0 && inputValue % 5 == 0)
-            {
-                return "FizzBuzz";
-            }
-
+            var result = "";
+            
             if (inputValue % 3 == 0)
             {
-                return "Fizz";
-            }
-
+                result += "Fizz";
+            } 
             if (inputValue % 5 == 0)
             {
-                return "Buzz";
+                result += "Buzz";
             }
 
-            return inputValue.ToString();
+            return result != "" ? result : inputValue.ToString();
         }
     }
 }
